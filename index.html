@@ -9,168 +9,229 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --purple:#7C6EF5;
-  --purple-light:#A89DF8;
-  --purple-dark:#4F43C8;
-  --pink:#F06292;
-  --teal:#26C6A6;
-  --orange:#FF8A65;
-  --dark:#0F0E1A;
-  --dark2:#1A1830;
-  --dark3:#242240;
-  --text:#E8E6FF;
-  --text2:#A8A4CC;
-  --text3:#6B6890;
-  --card:#1E1C35;
-  --card2:#252340;
-  --border:rgba(124,110,245,0.2);
+  --purple:#C084FC;
+  --purple-light:#DDD6FE;
+  --purple-dark:#7C3AED;
+  --pink:#F9A8D4;
+  --pink-mid:#F472B6;
+  --pink-dark:#BE185D;
+  --teal:#A5F3FC;
+  --orange:#FCA5A5;
+  --dark:#160B2E;
+  --dark2:#211540;
+  --dark3:#2E1D52;
+  --text:#FAF5FF;
+  --text2:#EDE9FE;
+  --text3:#C4B5FD;
+  --card:rgba(255,255,255,0.07);
+  --card2:rgba(255,255,255,0.04);
+  --border:rgba(240,171,252,0.22);
   --radius:16px;
 }
-body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+/* Soft pastel gradient layer */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(ellipse 90% 50% at 10% 5%, rgba(244,114,182,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 45% at 90% 90%, rgba(167,139,250,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 55% 45%, rgba(249,168,212,0.08) 0%, transparent 60%);
+}
+body > *{position:relative;z-index:1}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(15,14,26,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.nav-logo{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--purple-light),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav{position:sticky;top:0;z-index:100;background:rgba(22,11,46,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.nav-logo{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s}
-.nav-links a:hover{color:var(--purple-light)}
+.nav-links a{color:var(--text3);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--pink)}
 .nav-right{display:flex;align-items:center;gap:1rem}
-
-/* LANG TOGGLE */
-.lang-toggle{display:flex;gap:0.2rem;background:var(--dark2);border:1px solid var(--border);border-radius:100px;padding:0.25rem}
+.lang-toggle{display:flex;gap:0.2rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:100px;padding:0.25rem}
 .lang-btn{background:transparent;border:none;color:var(--text3);font-size:0.7rem;font-weight:700;letter-spacing:0.04em;padding:0.35rem 0.65rem;border-radius:100px;cursor:pointer;transition:all 0.2s}
-.lang-btn.active{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff}
+.lang-btn.active{background:linear-gradient(135deg,var(--pink-mid),var(--purple));color:#fff}
 .lang-btn:not(.active):hover{color:var(--text)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;text-align:center}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.25;animation:float 8s ease-in-out infinite}
-.blob1{width:500px;height:500px;background:var(--purple);top:-100px;left:-100px;animation-delay:0s}
-.blob2{width:400px;height:400px;background:var(--pink);bottom:-50px;right:-80px;animation-delay:-3s}
-.blob3{width:300px;height:300px;background:var(--teal);top:40%;left:50%;animation-delay:-5s}
-@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);animation:float 9s ease-in-out infinite}
+.blob1{width:480px;height:480px;background:rgba(244,114,182,0.22);top:-80px;left:-120px;animation-delay:0s}
+.blob2{width:380px;height:380px;background:rgba(167,139,250,0.2);bottom:-60px;right:-80px;animation-delay:-3.5s}
+.blob3{width:280px;height:280px;background:rgba(249,168,212,0.15);top:35%;left:55%;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
 .hero-content{position:relative;z-index:1;max-width:800px}
-.hero-badge{display:inline-block;background:rgba(124,110,245,0.15);border:1px solid rgba(124,110,245,0.3);border-radius:100px;padding:0.4rem 1rem;font-size:0.8rem;color:var(--purple-light);margin-bottom:1.5rem;letter-spacing:0.05em}
-.hero-name{font-size:clamp(3rem,8vw,5.5rem);font-weight:900;line-height:1;margin-bottom:0.5rem}
-.hero-name .first{color:var(--text)}
-.hero-name .last{background:linear-gradient(135deg,var(--purple-light),var(--pink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-title{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:300;color:var(--text2);margin-bottom:1.5rem}
-.hero-title span{color:var(--purple-light);font-weight:500}
-.hero-desc{font-size:1rem;color:var(--text3);max-width:550px;margin:0 auto 2.5rem;line-height:1.8}
+
+/* PHOTO CIRCLE */
+.hero-photo-wrap{
+  display:flex;justify-content:center;margin-bottom:2rem;
+  position:relative;
+}
+.hero-photo-ring{
+  position:relative;
+  width:160px;height:160px;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(135deg,var(--pink),var(--purple),var(--pink-mid));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px rgba(244,114,182,0.35),0 0 80px rgba(192,132,252,0.2);
+  animation:ringPulse 4s ease-in-out infinite;
+}
+@keyframes ringPulse{0%,100%{box-shadow:0 0 40px rgba(244,114,182,0.35),0 0 80px rgba(192,132,252,0.2)}50%{box-shadow:0 0 60px rgba(244,114,182,0.5),0 0 100px rgba(192,132,252,0.3)}}
+.hero-photo-inner{
+  width:154px;height:154px;border-radius:50%;overflow:hidden;
+  background:linear-gradient(135deg,rgba(196,181,253,0.3),rgba(249,168,212,0.3));
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(255,255,255,0.1);
+}
+.hero-photo-inner img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
+  display:none; /* Hidden until src set */
+}
+.hero-photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0.25rem;
+}
+.hero-photo-placeholder-icon{font-size:3rem;opacity:0.6}
+.hero-photo-placeholder-text{font-size:0.6rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase}
+/* Floating deco dots */
+.photo-deco{position:absolute;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));opacity:0.7}
+.photo-deco-1{width:12px;height:12px;top:10px;right:-5px;animation:floatDot 3s ease-in-out infinite}
+.photo-deco-2{width:8px;height:8px;bottom:15px;left:-8px;animation:floatDot 4s ease-in-out infinite;animation-delay:-1.5s;background:linear-gradient(135deg,var(--purple),var(--pink-mid))}
+.photo-deco-3{width:6px;height:6px;top:50%;left:-15px;animation:floatDot 3.5s ease-in-out infinite;animation-delay:-0.8s;background:var(--pink)}
+@keyframes floatDot{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.hero-badge{display:inline-block;background:rgba(249,168,212,0.12);border:1px solid rgba(249,168,212,0.3);border-radius:100px;padding:0.4rem 1rem;font-size:0.78rem;color:var(--pink);margin-bottom:1.25rem;letter-spacing:0.05em}
+.hero-name{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;line-height:1.05;margin-bottom:0.5rem}
+.hero-name .first{color:var(--text);display:block}
+.hero-name .last{background:linear-gradient(135deg,var(--pink),var(--purple),var(--pink-mid));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.hero-title{font-size:clamp(1rem,2.5vw,1.3rem);font-weight:300;color:var(--text2);margin-bottom:1.25rem}
+.hero-title span{color:var(--pink);font-weight:600}
+.hero-desc{font-size:0.95rem;color:var(--text3);max-width:520px;margin:0 auto 2.25rem;line-height:1.85}
 .hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .btn{padding:0.75rem 1.75rem;border-radius:100px;font-size:0.9rem;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;display:inline-block}
-.btn-primary{background:linear-gradient(135deg,var(--purple),var(--purple-dark));color:#fff;box-shadow:0 4px 20px rgba(124,110,245,0.35)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,110,245,0.5)}
-.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--border)}
-.btn-outline:hover{border-color:var(--purple-light);color:var(--purple-light);transform:translateY(-2px)}
-.scroll-hint{margin-top:4rem;color:var(--text3);font-size:0.8rem;animation:bounce 2s ease-in-out infinite}
+.btn-primary{background:linear-gradient(135deg,var(--pink-mid),var(--purple-dark));color:#fff;box-shadow:0 4px 20px rgba(244,114,182,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,114,182,0.5)}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(240,171,252,0.3)}
+.btn-outline:hover{border-color:var(--pink);color:var(--pink);transform:translateY(-2px)}
+.scroll-hint{margin-top:3.5rem;color:var(--text3);font-size:0.78rem;animation:bounce 2s ease-in-out infinite}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
 /* SECTIONS */
 section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
-.section-tag{display:inline-block;background:rgba(124,110,245,0.1);border:1px solid rgba(124,110,245,0.25);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.75rem;color:var(--purple-light);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
-.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--text);margin-bottom:0.5rem}
-.section-sub{color:var(--text3);font-size:1rem;margin-bottom:3rem}
+.section-tag{display:inline-block;background:rgba(249,168,212,0.1);border:1px solid rgba(249,168,212,0.25);border-radius:100px;padding:0.3rem 0.9rem;font-size:0.72rem;color:var(--pink);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:var(--text);margin-bottom:0.4rem}
+.section-sub{color:var(--text3);font-size:0.95rem;margin-bottom:3rem}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.about-text p{color:var(--text2);line-height:1.9;margin-bottom:1.2rem}
-.about-text p strong{color:var(--purple-light)}
+.about-text p{color:var(--text2);line-height:1.9;margin-bottom:1.2rem;font-size:0.95rem}
+.about-text p strong{color:var(--pink)}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center}
-.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-label{font-size:0.8rem;color:var(--text3);margin-top:0.25rem}
+.stat-card{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;backdrop-filter:blur(8px)}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.78rem;color:var(--text3);margin-top:0.25rem}
 
 /* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
-.skill-group{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
-.skill-group:hover{border-color:var(--purple);transform:translateY(-4px)}
-.skill-group-icon{font-size:1.5rem;margin-bottom:0.75rem}
-.skill-group-title{font-size:0.85rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem}
-.skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
-.tag{background:rgba(124,110,245,0.1);border:1px solid rgba(124,110,245,0.2);border-radius:100px;padding:0.25rem 0.7rem;font-size:0.75rem;color:var(--purple-light);font-weight:500}
-.tag.pink{background:rgba(240,98,146,0.1);border-color:rgba(240,98,146,0.25);color:#F48FB1}
-.tag.teal{background:rgba(38,198,166,0.1);border-color:rgba(38,198,166,0.25);color:#4DB6AC}
-.tag.orange{background:rgba(255,138,101,0.1);border-color:rgba(255,138,101,0.25);color:#FFAB91}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.25rem}
+.skill-group{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;transition:border-color 0.2s,transform 0.2s;backdrop-filter:blur(8px)}
+.skill-group:hover{border-color:var(--pink);transform:translateY(-4px)}
+.skill-group-icon{font-size:1.4rem;margin-bottom:0.65rem}
+.skill-group-title{font-size:0.78rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.65rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+.tag{background:rgba(249,168,212,0.1);border:1px solid rgba(249,168,212,0.2);border-radius:100px;padding:0.22rem 0.65rem;font-size:0.72rem;color:var(--pink);font-weight:500}
+.tag.purple{background:rgba(192,132,252,0.1);border-color:rgba(192,132,252,0.25);color:var(--purple-light)}
+.tag.teal{background:rgba(165,243,252,0.08);border-color:rgba(165,243,252,0.2);color:var(--teal)}
+.tag.soft{background:rgba(252,165,165,0.1);border-color:rgba(252,165,165,0.2);color:var(--orange)}
 
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:1fr;gap:2rem}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;display:grid;grid-template-columns:1fr 1fr;gap:0}
-.project-card:hover{border-color:var(--purple);transform:translateY(-4px)}
-.project-card.featured{border-color:rgba(124,110,245,0.4)}
+.project-card{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;display:grid;grid-template-columns:1fr 1fr;gap:0;backdrop-filter:blur(8px)}
+.project-card:hover{border-color:var(--pink);transform:translateY(-4px)}
+.project-card.featured{border-color:rgba(244,114,182,0.35)}
 .project-content{padding:2rem}
-.project-badge{display:inline-block;background:linear-gradient(135deg,var(--purple),var(--pink));border-radius:100px;padding:0.25rem 0.8rem;font-size:0.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem}
-.project-title{font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:0.5rem}
-.project-desc{color:var(--text2);font-size:0.9rem;line-height:1.7;margin-bottom:1.25rem}
-.project-tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
+.project-badge{display:inline-block;background:linear-gradient(135deg,var(--pink-mid),var(--purple-dark));border-radius:100px;padding:0.25rem 0.8rem;font-size:0.68rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem}
+.project-title{font-size:1.35rem;font-weight:800;color:var(--text);margin-bottom:0.5rem}
+.project-desc{color:var(--text2);font-size:0.88rem;line-height:1.75;margin-bottom:1.25rem}
+.project-tech{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.25rem}
 .project-links{display:flex;gap:0.75rem}
-.proj-btn{padding:0.5rem 1rem;border-radius:100px;font-size:0.8rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:transform 0.2s}
-.proj-btn-pri{background:var(--purple);color:#fff}
-.proj-btn-sec{background:transparent;color:var(--text2);border:1px solid var(--border)}
+.proj-btn{padding:0.5rem 1rem;border-radius:100px;font-size:0.78rem;font-weight:600;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:transform 0.2s}
+.proj-btn-pri{background:linear-gradient(135deg,var(--pink-mid),var(--purple-dark));color:#fff}
 .proj-btn:hover{transform:scale(1.04)}
-.project-visual{background:linear-gradient(135deg,rgba(124,110,245,0.15),rgba(240,98,146,0.1));display:flex;align-items:center;justify-content:center;min-height:220px;position:relative;overflow:hidden}
+.project-visual{background:linear-gradient(135deg,rgba(244,114,182,0.12),rgba(167,139,250,0.12));display:flex;align-items:center;justify-content:center;min-height:220px;position:relative;overflow:hidden}
 .project-visual-inner{text-align:center;z-index:1}
-.project-visual-icon{font-size:4rem;margin-bottom:0.5rem;display:block}
-.project-visual-label{font-size:0.75rem;color:var(--text3)}
-.mini-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
-.mini-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
-.mini-card:hover{border-color:var(--purple-light);transform:translateY(-3px)}
-.mini-icon{font-size:1.8rem;margin-bottom:0.75rem;display:block}
-.mini-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
-.mini-desc{font-size:0.8rem;color:var(--text3);line-height:1.6}
+.project-visual-icon{font-size:3.5rem;margin-bottom:0.5rem;display:block}
+.project-visual-label{font-size:0.72rem;color:var(--text3)}
+.mini-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem}
+.mini-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;transition:border-color 0.2s,transform 0.2s;backdrop-filter:blur(6px)}
+.mini-card:hover{border-color:var(--pink);transform:translateY(-3px)}
+.mini-icon{font-size:1.7rem;margin-bottom:0.65rem;display:block}
+.mini-title{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.35rem}
+.mini-desc{font-size:0.78rem;color:var(--text3);line-height:1.65}
 
 /* EXPERIENCE */
 .exp-timeline{position:relative;padding-left:2rem}
-.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--purple),var(--pink),transparent)}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--pink),var(--purple),transparent)}
 .exp-item{position:relative;margin-bottom:2.5rem;padding-left:1.5rem}
-.exp-dot{position:absolute;left:-2.4rem;top:0.4rem;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(124,110,245,0.2)}
-.exp-date{font-size:0.75rem;color:var(--purple-light);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem}
-.exp-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
-.exp-company{font-size:0.875rem;color:var(--text3);margin-bottom:0.75rem}
+.exp-dot{position:absolute;left:-2.4rem;top:0.4rem;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(244,114,182,0.2)}
+.exp-date{font-size:0.72rem;color:var(--pink);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.35rem}
+.exp-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.2rem}
+.exp-company{font-size:0.85rem;color:var(--text3);margin-bottom:0.7rem}
 .exp-bullets{list-style:none}
-.exp-bullets li{font-size:0.875rem;color:var(--text2);padding:0.3rem 0;padding-left:1rem;position:relative;line-height:1.6}
-.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--purple)}
+.exp-bullets li{font-size:0.85rem;color:var(--text2);padding:0.28rem 0;padding-left:1rem;position:relative;line-height:1.65}
+.exp-bullets li::before{content:'✦';position:absolute;left:0;color:var(--pink);font-size:0.6rem;top:0.45rem}
 
 /* CONTACT */
-.contact-wrap{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3rem;text-align:center;position:relative;overflow:hidden}
-.contact-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,110,245,0.08),rgba(240,98,146,0.05));z-index:0}
+.contact-wrap{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:24px;padding:3rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.contact-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(244,114,182,0.08),rgba(167,139,250,0.06));z-index:0}
 .contact-content{position:relative;z-index:1}
 .contact-title{font-size:2rem;font-weight:800;color:var(--text);margin-bottom:0.5rem}
-.contact-sub{color:var(--text3);margin-bottom:2rem}
+.contact-sub{color:var(--text3);margin-bottom:2rem;font-size:0.9rem}
 .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
-.contact-link{display:flex;align-items:center;gap:0.5rem;background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.25rem;color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:500;transition:border-color 0.2s,transform 0.2s}
-.contact-link:hover{border-color:var(--purple);color:var(--purple-light);transform:translateY(-2px)}
-.contact-link-icon{width:20px;height:20px}
+.contact-link{display:flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:12px;padding:0.75rem 1.25rem;color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:500;transition:border-color 0.2s,transform 0.2s}
+.contact-link:hover{border-color:var(--pink);color:var(--pink);transform:translateY(-2px)}
+.contact-link-icon{width:18px;height:18px;flex-shrink:0}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:0.8rem}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:0.78rem;position:relative;z-index:1}
 
-/* MODAL — détail projet */
-.modal-overlay{position:fixed;inset:0;background:rgba(10,9,20,0.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,5,25,0.85);backdrop-filter:blur(10px);z-index:1000;display:none;align-items:center;justify-content:center;padding:1.5rem}
 .modal-overlay.active{display:flex;animation:fadeIn 0.2s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-box{background:var(--card);border:1px solid rgba(124,110,245,0.35);border-radius:24px;max-width:760px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;animation:modalUp 0.25s ease}
+.modal-box{background:rgba(33,21,64,0.98);border:1px solid rgba(244,114,182,0.3);border-radius:24px;max-width:760px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;animation:modalUp 0.25s ease}
 @keyframes modalUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-box::-webkit-scrollbar{width:6px}
-.modal-box::-webkit-scrollbar-thumb{background:var(--purple);border-radius:10px}
-.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--dark2);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);font-size:1.1rem;line-height:1;transition:border-color 0.2s,color 0.2s,transform 0.2s}
-.modal-close:hover{border-color:var(--purple);color:var(--purple-light);transform:rotate(90deg)}
+.modal-box::-webkit-scrollbar{width:5px}
+.modal-box::-webkit-scrollbar-thumb{background:var(--pink);border-radius:10px}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);font-size:1rem;line-height:1;transition:all 0.2s}
+.modal-close:hover{border-color:var(--pink);color:var(--pink);transform:rotate(90deg)}
 .modal-header{margin-bottom:2rem;padding-right:2.5rem}
 .modal-title{font-size:1.6rem;font-weight:800;color:var(--text);margin-top:0.75rem;margin-bottom:0.5rem}
-.modal-tagline{color:var(--text3);font-size:0.9rem;line-height:1.7}
+.modal-tagline{color:var(--text3);font-size:0.88rem;line-height:1.75}
 .modal-section{margin-bottom:1.75rem}
 .modal-section:last-child{margin-bottom:0}
-.modal-section-title{display:flex;align-items:center;gap:0.6rem;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.85rem}
-.modal-section-icon{font-size:1.25rem}
-.modal-section p{font-size:0.875rem;color:var(--text2);line-height:1.8;margin-bottom:0.5rem}
+.modal-section-title{display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.85rem}
+.modal-section-icon{font-size:1.15rem}
+.modal-section p{font-size:0.85rem;color:var(--text2);line-height:1.85;margin-bottom:0.5rem}
 .modal-section ul{list-style:none}
-.modal-section ul li{font-size:0.875rem;color:var(--text2);padding:0.3rem 0;padding-left:1.1rem;position:relative;line-height:1.7}
-.modal-section ul li::before{content:'▸';position:absolute;left:0;color:var(--purple)}
-.modal-section ul li strong{color:var(--purple-light)}
+.modal-section ul li{font-size:0.85rem;color:var(--text2);padding:0.28rem 0;padding-left:1.1rem;position:relative;line-height:1.75}
+.modal-section ul li::before{content:'✦';position:absolute;left:0;color:var(--pink);font-size:0.55rem;top:0.48rem}
+.modal-section ul li strong{color:var(--pink)}
 .modal-stack{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--border)}
 .modal-stack-link{display:flex;align-items:center;gap:0.5rem;color:var(--text2);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s}
-.modal-stack-link:hover{color:var(--purple-light)}
+.modal-stack-link:hover{color:var(--pink)}
+
+/* Section zebra bg */
+.bg-soft{background:rgba(255,255,255,0.025);border-radius:32px}
 
 /* RESPONSIVE */
 @media(max-width:700px){
@@ -208,9 +269,28 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
     <div class="blob blob3"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge" data-i18n="heroBadge">✦ Disponible &mdash; Open to opportunities</div>
+
+    <!-- PHOTO CIRCLE -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <div class="hero-photo-inner" id="photoInner">
+          <img id="heroPhoto" src="https://res.cloudinary.com/dwiaikrtd/image/upload/v1782912820/nerminebelgharekpohoto_udrqav.jpg" alt="Nermine Belgharek"
+     onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';"
+     onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';">
+          <div class="hero-photo-placeholder" id="photoPlaceholder">
+            <span class="hero-photo-placeholder-icon">🌸</span>
+            <span class="hero-photo-placeholder-text">Belgharek Nermine</span>
+          </div>
+        </div>
+        <div class="photo-deco photo-deco-1"></div>
+        <div class="photo-deco photo-deco-2"></div>
+        <div class="photo-deco photo-deco-3"></div>
+      </div>
+    </div>
+
+    <div class="hero-badge" data-i18n="heroBadge">✦ Disponible — Open to opportunities</div>
     <h1 class="hero-name">
-      <span class="first">Belgharek<br></span>
+      <span class="first">Belgharek</span>
       <span class="last">Nermine</span>
     </h1>
     <p class="hero-title" data-i18n="heroTitle">Développeuse <span>Full-Stack</span></p>
@@ -219,7 +299,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <a class="btn btn-primary" href="#projects" data-i18n="heroCtaPrimary">Voir mes projets</a>
       <a class="btn btn-outline" href="#contact" data-i18n="heroCtaSecondary">Me contacter</a>
     </div>
-    <p class="scroll-hint" data-i18n="scrollHint">↓ Scroll</p>
+    <p class="scroll-hint">↓ Scroll</p>
   </div>
 </div>
 
@@ -233,27 +313,15 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <p data-i18n="aboutP3">Autonome, rigoureuse, et toujours prête à apprendre ce que le projet demande.</p>
     </div>
     <div class="about-stats">
-      <div class="stat-card">
-        <div class="stat-num">5+</div>
-        <div class="stat-label" data-i18n="statLabel1">Projets déployés</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">TB</div>
-        <div class="stat-label" data-i18n="statLabel2">Mention obtenue</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">3</div>
-        <div class="stat-label" data-i18n="statLabel3">Langues maîtrisées</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">2</div>
-        <div class="stat-label" data-i18n="statLabel4">Certifications Cisco</div>
-      </div>
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label" data-i18n="statLabel1">Projets déployés</div></div>
+      <div class="stat-card"><div class="stat-num">TB</div><div class="stat-label" data-i18n="statLabel2">Mention obtenue</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label" data-i18n="statLabel3">Langues maîtrisées</div></div>
+      <div class="stat-card"><div class="stat-num">2</div><div class="stat-label" data-i18n="statLabel4">Certifications Cisco</div></div>
     </div>
   </div>
 </section>
 
-<section id="skills" style="background:rgba(124,110,245,0.03);border-radius:32px">
+<section id="skills" class="bg-soft">
   <div class="section-tag" data-i18n="skillsTag">02 — Stack technique</div>
   <h2 class="section-title" data-i18n="skillsTitle">Ce que je sais faire</h2>
   <p class="section-sub" data-i18n="skillsSub">Les technologies avec lesquelles je travaille au quotidien</p>
@@ -261,44 +329,32 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
     <div class="skill-group">
       <div class="skill-group-icon">⚡</div>
       <div class="skill-group-title" data-i18n="groupFrontend">Frontend</div>
-      <div class="skill-tags">
-        <span class="tag">Angular</span><span class="tag">NgRx</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Flutter</span><span class="tag">Jetpack Compose</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Angular</span><span class="tag">NgRx</span><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Flutter</span><span class="tag">Jetpack Compose</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">🔧</div>
       <div class="skill-group-title" data-i18n="groupBackend">Backend</div>
-      <div class="skill-tags">
-        <span class="tag pink">Spring Boot</span><span class="tag pink">Java</span><span class="tag pink">FastAPI</span><span class="tag pink">PHP/Symfony</span><span class="tag pink">Firebase</span>
-      </div>
+      <div class="skill-tags"><span class="tag purple">Spring Boot</span><span class="tag purple">Java</span><span class="tag purple">FastAPI</span><span class="tag purple">PHP/Symfony</span><span class="tag purple">Firebase</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">🗄️</div>
       <div class="skill-group-title" data-i18n="groupDb">Base de données</div>
-      <div class="skill-tags">
-        <span class="tag teal">PostgreSQL</span><span class="tag teal">MySQL</span><span class="tag teal">Firestore</span>
-      </div>
+      <div class="skill-tags"><span class="tag teal">PostgreSQL</span><span class="tag teal">MySQL</span><span class="tag teal">Firestore</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">🤖</div>
       <div class="skill-group-title" data-i18n="groupAi">Data & IA</div>
-      <div class="skill-tags">
-        <span class="tag orange">Python</span><span class="tag orange">scikit-learn</span><span class="tag orange">TF-IDF</span><span class="tag orange">Random Forest</span><span class="tag orange">Pandas</span><span class="tag orange">Matplotlib</span>
-      </div>
+      <div class="skill-tags"><span class="tag soft">Python</span><span class="tag soft">scikit-learn</span><span class="tag soft">TF-IDF</span><span class="tag soft">Random Forest</span><span class="tag soft">Pandas</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">☁️</div>
       <div class="skill-group-title" data-i18n="groupDevops">DevOps & Outils</div>
-      <div class="skill-tags">
-        <span class="tag">Git/GitHub</span><span class="tag">Docker</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Cloudinary</span><span class="tag">Postman</span>
-      </div>
+      <div class="skill-tags"><span class="tag">Git/GitHub</span><span class="tag">Docker</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Cloudinary</span></div>
     </div>
     <div class="skill-group">
       <div class="skill-group-icon">🔗</div>
       <div class="skill-group-title" data-i18n="groupIntegrations">Intégrations</div>
-      <div class="skill-tags">
-        <span class="tag pink">JWT/RBAC</span><span class="tag pink">WebSocket</span><span class="tag pink">REST API</span><span class="tag pink">Brevo</span><span class="tag pink">WebRTC</span>
-      </div>
+      <div class="skill-tags"><span class="tag purple">JWT/RBAC</span><span class="tag purple">WebSocket</span><span class="tag purple">REST API</span><span class="tag purple">Brevo</span><span class="tag purple">WebRTC</span></div>
     </div>
   </div>
 </section>
@@ -307,16 +363,14 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
   <div class="section-tag" data-i18n="projectsTag">03 — Projets</div>
   <h2 class="section-title" data-i18n="projectsTitle">Ce que j'ai construit</h2>
   <p class="section-sub" data-i18n="projectsSub">Du concept au déploiement</p>
-
   <div class="projects-grid">
-    <!-- ClickBus featured -->
     <div class="project-card featured">
       <div class="project-content">
         <div class="project-badge" data-i18n="projectBadge">⭐ Projet principal — PFE</div>
         <h3 class="project-title">ClickBus</h3>
         <p class="project-desc" data-i18n="projectDesc">Plateforme complète de réservation de transport inter-cités pour la Libye. Moteur de tarification dynamique, modules IA (analyse sentiment + recommandation), app mobile conducteur avec QR code.</p>
         <div class="project-tech">
-          <span class="tag">Angular</span><span class="tag">NgRx</span><span class="tag pink">Spring Boot</span><span class="tag pink">FastAPI</span><span class="tag teal">PostgreSQL</span><span class="tag orange">TF-IDF</span><span class="tag orange">Random Forest</span><span class="tag">Ionic</span><span class="tag">Vercel</span><span class="tag">Railway</span>
+          <span class="tag">Angular</span><span class="tag">NgRx</span><span class="tag purple">Spring Boot</span><span class="tag purple">FastAPI</span><span class="tag teal">PostgreSQL</span><span class="tag soft">TF-IDF</span><span class="tag soft">Random Forest</span><span class="tag">Ionic</span><span class="tag">Railway</span>
         </div>
         <div class="project-links">
           <button class="proj-btn proj-btn-pri" data-i18n="projBtnLearnMore" onclick="openClickBusModal()">En savoir plus ↗</button>
@@ -325,58 +379,29 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <div class="project-visual">
         <div class="project-visual-inner">
           <span class="project-visual-icon">🚌</span>
-          <div style="font-size:1.2rem;font-weight:800;color:rgba(168,157,248,0.8);margin-bottom:0.25rem">ClickBus</div>
+          <div style="font-size:1.1rem;font-weight:800;color:rgba(249,168,212,0.85);margin-bottom:0.25rem">ClickBus</div>
           <div class="project-visual-label" data-i18n="projectVisualLabel">Déployé en production</div>
           <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
-            <span style="background:rgba(124,110,245,0.2);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.65rem;color:var(--purple-light)">IA</span>
-            <span style="background:rgba(38,198,166,0.2);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.65rem;color:var(--teal)">Full-Stack</span>
-            <span style="background:rgba(255,138,101,0.2);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.65rem;color:var(--orange)">Mobile</span>
+            <span style="background:rgba(249,168,212,0.15);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.62rem;color:var(--pink)">IA</span>
+            <span style="background:rgba(165,243,252,0.12);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.62rem;color:var(--teal)">Full-Stack</span>
+            <span style="background:rgba(192,132,252,0.15);border-radius:100px;padding:0.2rem 0.6rem;font-size:0.62rem;color:var(--purple)">Mobile</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div style="margin-top:2rem">
-    <p style="color:var(--text3);font-size:0.85rem;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:600" data-i18n="otherProjectsLabel">Autres projets</p>
+  <div style="margin-top:1.75rem">
+    <p style="color:var(--text3);font-size:0.78rem;margin-bottom:1.1rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600" data-i18n="otherProjectsLabel">Autres projets</p>
     <div class="mini-projects">
-      <div class="mini-card">
-        <span class="mini-icon">💬</span>
-        <div class="mini-title">+216</div>
-        <p class="mini-desc" data-i18n="miniDesc1">App de messagerie intelligente avec chatbot IA, appels temps réel WebRTC, messages vocaux.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.75rem">
-          <span class="tag" style="font-size:0.7rem">Flutter</span><span class="tag" style="font-size:0.7rem">Firebase</span><span class="tag" style="font-size:0.7rem">WebRTC</span>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">🍳</span>
-        <div class="mini-title">ConnectChef</div>
-        <p class="mini-desc" data-i18n="miniDesc2">Réseau social culinaire Android en Clean Architecture MVVM, flux temps réel, stockage images.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.75rem">
-          <span class="tag pink" style="font-size:0.7rem">Kotlin</span><span class="tag pink" style="font-size:0.7rem">Jetpack Compose</span><span class="tag teal" style="font-size:0.7rem">Firestore</span>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">🦷</span>
-        <div class="mini-title">Gestion Dentaire</div>
-        <p class="mini-desc" data-i18n="miniDesc3">Plateforme de gestion des patients, rendez-vous, factures et traitements dentaires.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.75rem">
-          <span class="tag pink" style="font-size:0.7rem">Symfony</span><span class="tag teal" style="font-size:0.7rem">MySQL</span>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-icon">📊</span>
-        <div class="mini-title">ML — Performance académique</div>
-        <p class="mini-desc" data-i18n="miniDesc4">Prédiction de la note finale étudiante avec preprocessing, modélisation et visualisation.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.75rem">
-          <span class="tag orange" style="font-size:0.7rem">Python</span><span class="tag orange" style="font-size:0.7rem">scikit-learn</span><span class="tag orange" style="font-size:0.7rem">Pandas</span>
-        </div>
-      </div>
+      <div class="mini-card"><span class="mini-icon">💬</span><div class="mini-title">+216</div><p class="mini-desc" data-i18n="miniDesc1">App de messagerie intelligente avec chatbot IA, appels temps réel WebRTC, messages vocaux.</p><div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.65rem"><span class="tag" style="font-size:0.68rem">Flutter</span><span class="tag" style="font-size:0.68rem">Firebase</span><span class="tag" style="font-size:0.68rem">WebRTC</span></div></div>
+      <div class="mini-card"><span class="mini-icon">🍳</span><div class="mini-title">ConnectChef</div><p class="mini-desc" data-i18n="miniDesc2">Réseau social culinaire Android en Clean Architecture MVVM, flux temps réel, stockage images.</p><div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.65rem"><span class="tag purple" style="font-size:0.68rem">Kotlin</span><span class="tag purple" style="font-size:0.68rem">Jetpack Compose</span><span class="tag teal" style="font-size:0.68rem">Firestore</span></div></div>
+      <div class="mini-card"><span class="mini-icon">🦷</span><div class="mini-title">Gestion Dentaire</div><p class="mini-desc" data-i18n="miniDesc3">Plateforme de gestion des patients, rendez-vous, factures et traitements dentaires.</p><div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.65rem"><span class="tag purple" style="font-size:0.68rem">Symfony</span><span class="tag teal" style="font-size:0.68rem">MySQL</span></div></div>
+      <div class="mini-card"><span class="mini-icon">📊</span><div class="mini-title">ML — Performance académique</div><p class="mini-desc" data-i18n="miniDesc4">Prédiction de la note finale étudiante avec preprocessing, modélisation et visualisation.</p><div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.65rem"><span class="tag soft" style="font-size:0.68rem">Python</span><span class="tag soft" style="font-size:0.68rem">scikit-learn</span><span class="tag soft" style="font-size:0.68rem">Pandas</span></div></div>
     </div>
   </div>
 </section>
 
-<section id="experience" style="background:rgba(124,110,245,0.03);border-radius:32px">
+<section id="experience" class="bg-soft">
   <div class="section-tag" data-i18n="experienceTag">04 — Expérience</div>
   <h2 class="section-title" data-i18n="experienceTitle">Mon parcours</h2>
   <p class="section-sub" data-i18n="experienceSub">Stages et formations</p>
@@ -409,20 +434,18 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <div class="exp-date" data-i18n="exp3Date">Jan. – Fév. 2024 · Stage d'initiation</div>
       <div class="exp-title" data-i18n="exp3Title">Stagiaire développement</div>
       <div class="exp-company" data-i18n="exp3Company">One Tech Business Solutions</div>
-      <ul class="exp-bullets">
-        <li data-i18n="exp3B1">Observation du cycle de vie de projets web en environnement professionnel</li>
-      </ul>
+      <ul class="exp-bullets"><li data-i18n="exp3B1">Observation du cycle de vie de projets web en environnement professionnel</li></ul>
     </div>
     <div class="exp-item">
-      <div class="exp-dot" style="background:linear-gradient(135deg,var(--teal),#26a69a)"></div>
+      <div class="exp-dot" style="background:linear-gradient(135deg,var(--teal),var(--purple-light))"></div>
       <div class="exp-date" data-i18n="exp4Date">2023 – 2026 · Formation</div>
       <div class="exp-title" data-i18n="exp4Title">Licence Technologies de l'Informatique — DSI</div>
       <div class="exp-company" data-i18n="exp4Company">ISET Kélibia · Mention Très Bien</div>
     </div>
     <div class="exp-item" style="margin-bottom:0">
-      <div class="exp-dot" style="background:var(--text3);box-shadow:0 0 0 3px rgba(168,164,204,0.15)"></div>
+      <div class="exp-dot" style="background:var(--text3);box-shadow:none"></div>
       <div class="exp-date" style="color:var(--text3)" data-i18n="exp5Date">2023 · Formation</div>
-      <div class="exp-title" style="font-size:0.95rem;color:var(--text2)" data-i18n="exp5Title">Baccalauréat en Mathématiques</div>
+      <div class="exp-title" style="font-size:0.93rem;color:var(--text2)" data-i18n="exp5Title">Baccalauréat en Mathématiques</div>
       <div class="exp-company" data-i18n="exp5Company">Lycée Sokra</div>
     </div>
   </div>
@@ -445,11 +468,11 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
           LinkedIn
         </a>
         <a class="contact-link" href="https://github.com/nerminewq" target="_blank">
-          <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/><path d="M9 19v-6M15 5c2 0 4 1 4 4v10M15 19v-6"/></svg>
+          <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9 19c-4 1-4-2-6-2m12 4v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 0 0-6.2 0C6.5 4.8 5.5 5.1 5.5 5.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 11.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
           github.com/nerminewq
         </a>
         <span class="contact-link">
-          <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 18z"/></svg>
+          <svg class="contact-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 18z"/></svg>
           +216 21 580 850
         </span>
       </div>
@@ -457,11 +480,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
   </div>
 </section>
 
-<footer>
-  <p data-i18n="footerText">Conçu &amp; développé avec ♥ — Nermine Belgharek · 2026</p>
-</footer>
+<footer><p data-i18n="footerText">Conçu &amp; développé avec ♥ — Nermine Belgharek · 2026</p></footer>
 
-<!-- MODALE DÉTAIL — CLICKBUS -->
+<!-- MODAL CLICKBUS -->
 <div class="modal-overlay" id="clickbusModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeClickBusModal()" aria-label="Fermer">✕</button>
@@ -470,53 +491,46 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <h3 class="modal-title">ClickBus 🚌</h3>
       <p class="modal-tagline" data-i18n="modalTagline">Plateforme SaaS multi-agences de réservation de transport inter-cités, conçue et déployée pour le marché libyen dans le cadre de mon PFE chez EZ-Pass.</p>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title"><span class="modal-section-icon">🏗️</span> <span data-i18n="modalArchTitle">Architecture</span></div>
-      <p data-i18n="modalArchP">ClickBus repose sur une architecture orientée domaine (DDD) découpée en trois services indépendants : un frontend <strong style="color:var(--purple-light)">Angular</strong> (NgRx, signals, composants standalone, i18n via ngx-translate), un backend <strong style="color:var(--purple-light)">Spring Boot</strong> qui expose l'API métier, et un service <strong style="color:var(--purple-light)">FastAPI</strong> dédié à l'intelligence artificielle.</p>
+      <div class="modal-section-title"><span class="modal-section-icon">🏗️</span><span data-i18n="modalArchTitle">Architecture</span></div>
+      <p data-i18n="modalArchP">ClickBus repose sur une architecture orientée domaine (DDD) découpée en trois services indépendants : un frontend <strong>Angular</strong> (NgRx, signals, composants standalone), un backend <strong>Spring Boot</strong> qui expose l'API métier, et un service <strong>FastAPI</strong> dédié à l'intelligence artificielle.</p>
       <ul>
         <li data-i18n="modalArchLi1">Modèle <strong>multi-agences</strong> : chaque agence gère ses propres trajets, bus et tarifs au sein d'une seule plateforme</li>
         <li data-i18n="modalArchLi2">Rôles dédiés : <strong>Owner</strong>, <strong>Staff</strong> et <strong>Driver</strong>, avec sécurisation des accès par JWT et RBAC</li>
       </ul>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title"><span class="modal-section-icon">💸</span> <span data-i18n="modalPricingTitle">Moteur de tarification dynamique</span></div>
-      <p data-i18n="modalPricingP">Le prix d'un billet n'est jamais figé : il résulte de la fusion en temps réel de plusieurs couches de tarification.</p>
+      <div class="modal-section-title"><span class="modal-section-icon">💸</span><span data-i18n="modalPricingTitle">Moteur de tarification dynamique</span></div>
       <ul>
-        <li data-i18n="modalPricingLi1">Tarif de base par trajet, défini par l'agence</li>
-        <li data-i18n="modalPricingLi2">Plans tarifaires propres à chaque agence (classe de bus, type de service)</li>
-        <li data-i18n="modalPricingLi3">Overlays calendaires qui ajustent automatiquement le prix selon la saison, les jours de forte affluence ou des événements ponctuels</li>
+        <li data-i18n="modalPricingLi1"><strong>Tarif de base</strong> par trajet, défini par l'agence</li>
+        <li data-i18n="modalPricingLi2"><strong>Plans tarifaires</strong> propres à chaque agence (classe de bus, type de service)</li>
+        <li data-i18n="modalPricingLi3"><strong>Overlays calendaires</strong> qui ajustent automatiquement le prix selon la saison, les jours de forte affluence ou des événements ponctuels</li>
       </ul>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title"><span class="modal-section-icon">🤖</span> <span data-i18n="modalAiTitle">Modules d'intelligence artificielle</span></div>
+      <div class="modal-section-title"><span class="modal-section-icon">🤖</span><span data-i18n="modalAiTitle">Modules d'intelligence artificielle</span></div>
       <ul>
-        <li data-i18n="modalAiLi1">Analyse de sentiment des avis clients (TF-IDF + Régression Logistique) pour distinguer automatiquement retours positifs et négatifs</li>
-        <li data-i18n="modalAiLi2">Résumé automatique des feedbacks via un LLM (Groq) pour donner à chaque agence une vue synthétique de la satisfaction client</li>
-        <li data-i18n="modalAiLi3">Recommandation de contrats promotionnels aux agences via un modèle Random Forest, basé sur leur historique de réservations</li>
+        <li data-i18n="modalAiLi1"><strong>Analyse de sentiment</strong> des avis clients (TF-IDF + Régression Logistique)</li>
+        <li data-i18n="modalAiLi2"><strong>Résumé automatique</strong> des feedbacks via un LLM (Groq)</li>
+        <li data-i18n="modalAiLi3"><strong>Recommandation de contrats promotionnels</strong> via un modèle Random Forest</li>
       </ul>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title"><span class="modal-section-icon">☁️</span> <span data-i18n="modalInfraTitle">Infrastructure & déploiement</span></div>
+      <div class="modal-section-title"><span class="modal-section-icon">☁️</span><span data-i18n="modalInfraTitle">Infrastructure & déploiement</span></div>
       <ul>
-        <li data-i18n="modalInfraLi1">Frontend Angular déployé sur Vercel, backend Spring Boot et service FastAPI déployés sur Railway</li>
-        <li data-i18n="modalInfraLi2">Base de données PostgreSQL, médias gérés via Cloudinary</li>
-        <li data-i18n="modalInfraLi3">Billets générés en PDF à la volée, entièrement en mémoire, puis envoyés par email via Brevo — sans aucun stockage fichier côté serveur</li>
-        <li data-i18n="modalInfraLi4">Communication temps réel via WebSocket pour le suivi des trajets</li>
+        <li data-i18n="modalInfraLi1">Frontend Angular sur <strong>Vercel</strong>, Spring Boot + FastAPI sur <strong>Railway</strong></li>
+        <li data-i18n="modalInfraLi2">Base de données <strong>PostgreSQL</strong>, médias via <strong>Cloudinary</strong></li>
+        <li data-i18n="modalInfraLi3">Billets PDF générés en mémoire et envoyés par email via <strong>Brevo</strong></li>
+        <li data-i18n="modalInfraLi4">Communication temps réel via <strong>WebSocket</strong></li>
       </ul>
     </div>
-
     <div class="modal-section">
-      <div class="modal-section-title"><span class="modal-section-icon">🚐</span> <span data-i18n="modalDriverTitle">Application conducteur</span></div>
-      <p data-i18n="modalDriverP">Une application mobile Ionic dédiée aux conducteurs permet la validation des billets par scan de QR Code et le suivi en temps réel des trajets.</p>
+      <div class="modal-section-title"><span class="modal-section-icon">🚐</span><span data-i18n="modalDriverTitle">Application conducteur</span></div>
+      <p data-i18n="modalDriverP">Une application mobile <strong>Ionic</strong> dédiée aux conducteurs permet la validation des billets par scan de QR Code et le suivi en temps réel des trajets.</p>
     </div>
-
     <div class="modal-stack">
       <a class="modal-stack-link" href="https://demonstrationpfe.vercel.app/client/home" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
         <span data-i18n="modalGithubLink">Voir le projet en ligne</span>
       </a>
     </div>
@@ -524,132 +538,73 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
 </div>
 
 <script>
-function openClickBusModal(){
-  document.getElementById('clickbusModal').classList.add('active');
-  document.body.style.overflow='hidden';
-}
-function closeClickBusModal(){
-  document.getElementById('clickbusModal').classList.remove('active');
-  document.body.style.overflow='';
-}
-document.getElementById('clickbusModal').addEventListener('click', function(e){
-  if(e.target === this) closeClickBusModal();
-});
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeClickBusModal();
-});
+/* -- Modal -- */
+function openClickBusModal(){document.getElementById('clickbusModal').classList.add('active');document.body.style.overflow='hidden'}
+function closeClickBusModal(){document.getElementById('clickbusModal').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('clickbusModal').addEventListener('click',function(e){if(e.target===this)closeClickBusModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeClickBusModal()});
 
-/* ---------- I18N ---------- */
-var translations = {
-  navAbout:{fr:'À propos',en:'About'},
-  navSkills:{fr:'Stack',en:'Stack'},
-  navProjects:{fr:'Projets',en:'Projects'},
-  navExperience:{fr:'Expérience',en:'Experience'},
-  navContact:{fr:'Contact',en:'Contact'},
-  navCta:{fr:'Me contacter',en:'Contact me'},
+/* -- Photo upload -- */
+function loadPhoto(src){
+  var img=document.getElementById('heroPhoto');
+  var ph=document.getElementById('photoPlaceholder');
+  img.src=src;
+  img.style.display='block';
+  ph.style.display='none';
+}
+/* To use: call loadPhoto('URL_or_base64_of_your_photo') in the browser console,
+   or replace the src in the img tag directly in the HTML file */
+
+/* -- i18n -- */
+var T={
+  navAbout:{fr:'À propos',en:'About'},navSkills:{fr:'Stack',en:'Stack'},navProjects:{fr:'Projets',en:'Projects'},navExperience:{fr:'Expérience',en:'Experience'},navContact:{fr:'Contact',en:'Contact'},navCta:{fr:'Me contacter',en:'Contact me'},
   heroBadge:{fr:'✦ Disponible — Open to opportunities',en:'✦ Available — Open to opportunities'},
   heroTitle:{fr:'Développeuse <span>Full-Stack</span>',en:'<span>Full-Stack</span> Developer'},
-  heroDesc:{fr:"Je conçois et déploie des applications web complètes — du backend Spring Boot à l'IA FastAPI en passant par Angular. Diplômée DSI, mention Très Bien.",en:'I design and deploy complete web applications — from Spring Boot backends to FastAPI-powered AI, with Angular on the front end. DSI graduate, with honors.'},
-  heroCtaPrimary:{fr:'Voir mes projets',en:'View my projects'},
-  heroCtaSecondary:{fr:'Me contacter',en:'Contact me'},
-  scrollHint:{fr:'↓ Scroll',en:'↓ Scroll'},
-  aboutTag:{fr:'01 — À propos',en:'01 — About'},
-  aboutTitle:{fr:'Qui suis-je ?',en:'Who am I?'},
-  aboutP1:{fr:"Fraîchement diplômée d'une <strong>Licence en Technologies de l'Informatique, spécialité DSI</strong> (mention Très Bien) à l'ISET Kélibia, je me passionne pour la création de solutions digitales complètes — du back au front, en passant par l'IA.",en:"Fresh graduate with a <strong>Bachelor's in Information Technology, IT Systems Development</strong> (with honors) from ISET Kélibia, passionate about building complete digital solutions — from backend to frontend, with AI in between."},
-  aboutP2:{fr:"Mon PFE chez <strong>EZ-Pass</strong> m'a permis de concevoir et déployer <strong>ClickBus</strong> de A à Z : plateforme de transport digitale avec moteur de tarification dynamique, modules IA, et infrastructure cloud complète.",en:"My capstone project at <strong>EZ-Pass</strong> let me design and deploy <strong>ClickBus</strong> from scratch: a digital transport platform with a dynamic pricing engine, AI modules, and a full cloud infrastructure."},
+  heroDesc:{fr:"Je conçois et déploie des applications web complètes — du backend Spring Boot à l'IA FastAPI en passant par Angular. Diplômée DSI, mention Très Bien.",en:'I design and deploy complete web applications — from Spring Boot backends to FastAPI AI, with Angular on the front. DSI graduate, with honors.'},
+  heroCtaPrimary:{fr:'Voir mes projets',en:'View my projects'},heroCtaSecondary:{fr:'Me contacter',en:'Contact me'},
+  aboutTag:{fr:'01 — À propos',en:'01 — About'},aboutTitle:{fr:'Qui suis-je ?',en:'Who am I?'},
+  aboutP1:{fr:"Fraîchement diplômée d'une <strong>Licence en Technologies de l'Informatique, spécialité DSI</strong> (mention Très Bien) à l'ISET Kélibia, je me passionne pour la création de solutions digitales complètes — du back au front, en passant par l'IA.",en:"Fresh graduate with a <strong>Bachelor's in IT Systems Development</strong> (with honors) from ISET Kélibia, passionate about building complete digital solutions from backend to frontend, with AI in between."},
+  aboutP2:{fr:"Mon PFE chez <strong>EZ-Pass</strong> m'a permis de concevoir et déployer <strong>ClickBus</strong> de A à Z : plateforme de transport digitale avec moteur de tarification dynamique, modules IA, et infrastructure cloud complète.",en:"My capstone at <strong>EZ-Pass</strong> let me design and deploy <strong>ClickBus</strong> from scratch: a digital transport platform with a dynamic pricing engine, AI modules, and full cloud infrastructure."},
   aboutP3:{fr:"Autonome, rigoureuse, et toujours prête à apprendre ce que le projet demande.",en:"Independent, thorough, and always ready to learn whatever a project requires."},
-  statLabel1:{fr:'Projets déployés',en:'Deployed projects'},
-  statLabel2:{fr:'Mention obtenue',en:'Honors earned'},
-  statLabel3:{fr:'Langues maîtrisées',en:'Languages spoken'},
-  statLabel4:{fr:'Certifications Cisco',en:'Cisco certifications'},
-  skillsTag:{fr:'02 — Stack technique',en:'02 — Tech stack'},
-  skillsTitle:{fr:'Ce que je sais faire',en:'What I work with'},
-  skillsSub:{fr:'Les technologies avec lesquelles je travaille au quotidien',en:'The technologies I use on a daily basis'},
-  groupFrontend:{fr:'Frontend',en:'Frontend'},
-  groupBackend:{fr:'Backend',en:'Backend'},
-  groupDb:{fr:'Base de données',en:'Database'},
-  groupAi:{fr:'Data & IA',en:'Data & AI'},
-  groupDevops:{fr:'DevOps & Outils',en:'DevOps & Tools'},
-  groupIntegrations:{fr:'Intégrations',en:'Integrations'},
-  projectsTag:{fr:'03 — Projets',en:'03 — Projects'},
-  projectsTitle:{fr:"Ce que j'ai construit",en:"What I've built"},
-  projectsSub:{fr:'Du concept au déploiement',en:'From concept to deployment'},
-  projectBadge:{fr:'⭐ Projet principal — PFE',en:'⭐ Main project — Capstone'},
-  modalBadge:{fr:'⭐ Projet principal — PFE',en:'⭐ Main project — Capstone'},
-  projectDesc:{fr:'Plateforme complète de réservation de transport inter-cités pour la Libye. Moteur de tarification dynamique, modules IA (analyse sentiment + recommandation), app mobile conducteur avec QR code.',en:'A complete intercity bus booking platform built for Libya. Dynamic pricing engine, AI modules (sentiment analysis + recommendations), and a driver mobile app with QR code validation.'},
-  projectVisualLabel:{fr:'Déployé en production',en:'Deployed in production'},
-  projBtnLearnMore:{fr:'En savoir plus ↗',en:'Learn more ↗'},
+  statLabel1:{fr:'Projets déployés',en:'Deployed projects'},statLabel2:{fr:'Mention obtenue',en:'Honors earned'},statLabel3:{fr:'Langues maîtrisées',en:'Languages spoken'},statLabel4:{fr:'Certifications Cisco',en:'Cisco certifications'},
+  skillsTag:{fr:'02 — Stack technique',en:'02 — Tech stack'},skillsTitle:{fr:'Ce que je sais faire',en:'What I work with'},skillsSub:{fr:'Les technologies avec lesquelles je travaille au quotidien',en:'The technologies I use daily'},
+  groupFrontend:{fr:'Frontend',en:'Frontend'},groupBackend:{fr:'Backend',en:'Backend'},groupDb:{fr:'Base de données',en:'Database'},groupAi:{fr:'Data & IA',en:'Data & AI'},groupDevops:{fr:'DevOps & Outils',en:'DevOps & Tools'},groupIntegrations:{fr:'Intégrations',en:'Integrations'},
+  projectsTag:{fr:'03 — Projets',en:'03 — Projects'},projectsTitle:{fr:"Ce que j'ai construit",en:"What I've built"},projectsSub:{fr:'Du concept au déploiement',en:'From concept to deployment'},
+  projectBadge:{fr:'⭐ Projet principal — PFE',en:'⭐ Main project — Capstone'},modalBadge:{fr:'⭐ Projet principal — PFE',en:'⭐ Main project — Capstone'},
+  projectDesc:{fr:'Plateforme complète de réservation de transport inter-cités pour la Libye. Moteur de tarification dynamique, modules IA (analyse sentiment + recommandation), app mobile conducteur avec QR code.',en:'A complete intercity bus booking platform for Libya. Dynamic pricing engine, AI modules (sentiment + recommendations), driver mobile app with QR code validation.'},
+  projectVisualLabel:{fr:'Déployé en production',en:'Deployed in production'},projBtnLearnMore:{fr:'En savoir plus ↗',en:'Learn more ↗'},
   otherProjectsLabel:{fr:'Autres projets',en:'Other projects'},
-  miniDesc1:{fr:'App de messagerie intelligente avec chatbot IA, appels temps réel WebRTC, messages vocaux.',en:'Smart messaging app with an AI chatbot, real-time WebRTC calls, and voice messages.'},
-  miniDesc2:{fr:'Réseau social culinaire Android en Clean Architecture MVVM, flux temps réel, stockage images.',en:'Android culinary social network built with Clean Architecture MVVM, real-time feed, image storage.'},
+  miniDesc1:{fr:'App de messagerie intelligente avec chatbot IA, appels temps réel WebRTC, messages vocaux.',en:'Smart messaging app with AI chatbot, real-time WebRTC calls, and voice messages.'},
+  miniDesc2:{fr:'Réseau social culinaire Android en Clean Architecture MVVM, flux temps réel, stockage images.',en:'Android culinary social network with Clean Architecture MVVM, real-time feed, image storage.'},
   miniDesc3:{fr:'Plateforme de gestion des patients, rendez-vous, factures et traitements dentaires.',en:'Platform for managing patients, appointments, invoices, and dental treatments.'},
   miniDesc4:{fr:'Prédiction de la note finale étudiante avec preprocessing, modélisation et visualisation.',en:"Predicting a student's final grade with preprocessing, modeling, and visualization."},
-  experienceTag:{fr:'04 — Expérience',en:'04 — Experience'},
-  experienceTitle:{fr:'Mon parcours',en:'My journey'},
-  experienceSub:{fr:'Stages et formations',en:'Internships & education'},
-  exp1Date:{fr:'Fév. – Mai 2026 · Stage PFE',en:'Feb. – May 2026 · Capstone internship'},
-  exp1Title:{fr:'Développeuse Full-Stack & IA',en:'Full-Stack & AI Developer'},
-  exp1Company:{fr:'EZ-Pass (startup libyenne) — Projet ClickBus',en:'EZ-Pass (Libyan startup) — ClickBus Project'},
-  exp1B1:{fr:'Conception et développement full-stack de ClickBus de A à Z',en:'Full-stack design and development of ClickBus from scratch'},
-  exp1B2:{fr:'Moteur de tarification dynamique (plans tarifaires + overlays calendaires)',en:'Dynamic pricing engine (pricing plans + calendar overlays)'},
-  exp1B3:{fr:"Modules IA : analyse de sentiment (TF-IDF + Logistic Regression) et recommandations (Random Forest) via FastAPI",en:'AI modules: sentiment analysis (TF-IDF + Logistic Regression) and recommendations (Random Forest) via FastAPI'},
-  exp1B4:{fr:'Déploiement : Angular → Vercel, Spring Boot + FastAPI → Railway',en:'Deployment: Angular → Vercel, Spring Boot + FastAPI → Railway'},
-  exp1B5:{fr:'App mobile conducteur Ionic avec validation QR code',en:'Ionic driver mobile app with QR code ticket validation'},
-  exp2Date:{fr:'Jan. – Fév. 2025 · Stage de perfectionnement',en:'Jan. – Feb. 2025 · Advanced internship'},
-  exp2Title:{fr:'Développeuse Full-Stack',en:'Full-Stack Developer'},
-  exp2Company:{fr:'Mahdi Skills',en:'Mahdi Skills'},
-  exp2B1:{fr:'Application de gestion de bijouterie (Angular + Spring Boot + MySQL)',en:'Jewelry store management app (Angular + Spring Boot + MySQL)'},
-  exp2B2:{fr:'Gestion des produits, factures, employés et rôles (admin/employé)',en:'Managed products, invoices, employees, and roles (admin/employee)'},
-  exp3Date:{fr:"Jan. – Fév. 2024 · Stage d'initiation",en:'Jan. – Feb. 2024 · Introductory internship'},
-  exp3Title:{fr:'Stagiaire développement',en:'Development Intern'},
-  exp3Company:{fr:'One Tech Business Solutions',en:'One Tech Business Solutions'},
-  exp3B1:{fr:'Observation du cycle de vie de projets web en environnement professionnel',en:'Observed the full lifecycle of web projects in a professional environment'},
-  exp4Date:{fr:'2023 – 2026 · Formation',en:'2023 – 2026 · Education'},
-  exp4Title:{fr:"Licence Technologies de l'Informatique — DSI",en:"Bachelor's in IT — Information Systems Development"},
-  exp4Company:{fr:'ISET Kélibia · Mention Très Bien',en:'ISET Kélibia · With Honors'},
-  exp5Date:{fr:'2023 · Formation',en:'2023 · Education'},
-  exp5Title:{fr:'Baccalauréat en Mathématiques',en:'High School Diploma — Mathematics track'},
-  exp5Company:{fr:'Lycée Sokra',en:'Sokra High School'},
-  contactTag:{fr:'05 — Contact',en:'05 — Contact'},
-  contactTitle:{fr:'Travaillons ensemble 🤝',en:"Let's work together 🤝"},
-  contactSub:{fr:'Ouverte aux opportunités — stage, poste junior, collaboration',en:'Open to opportunities — internships, junior roles, collaborations'},
+  experienceTag:{fr:'04 — Expérience',en:'04 — Experience'},experienceTitle:{fr:'Mon parcours',en:'My journey'},experienceSub:{fr:'Stages et formations',en:'Internships & education'},
+  exp1Date:{fr:'Fév. – Mai 2026 · Stage PFE',en:'Feb. – May 2026 · Capstone internship'},exp1Title:{fr:'Développeuse Full-Stack & IA',en:'Full-Stack & AI Developer'},exp1Company:{fr:'EZ-Pass (startup libyenne) — Projet ClickBus',en:'EZ-Pass (Libyan startup) — ClickBus Project'},
+  exp1B1:{fr:'Conception et développement full-stack de ClickBus de A à Z',en:'Full-stack design and development of ClickBus from scratch'},exp1B2:{fr:'Moteur de tarification dynamique (plans tarifaires + overlays calendaires)',en:'Dynamic pricing engine (pricing plans + calendar overlays)'},exp1B3:{fr:"Modules IA : analyse de sentiment (TF-IDF + Logistic Regression) et recommandations (Random Forest) via FastAPI",en:'AI modules: sentiment analysis (TF-IDF + Logistic Regression) and recommendations (Random Forest) via FastAPI'},exp1B4:{fr:'Déploiement : Angular → Vercel, Spring Boot + FastAPI → Railway',en:'Deployment: Angular → Vercel, Spring Boot + FastAPI → Railway'},exp1B5:{fr:'App mobile conducteur Ionic avec validation QR code',en:'Ionic driver mobile app with QR code ticket validation'},
+  exp2Date:{fr:'Jan. – Fév. 2025 · Stage de perfectionnement',en:'Jan. – Feb. 2025 · Advanced internship'},exp2Title:{fr:'Développeuse Full-Stack',en:'Full-Stack Developer'},exp2Company:{fr:'Mahdi Skills',en:'Mahdi Skills'},exp2B1:{fr:'Application de gestion de bijouterie (Angular + Spring Boot + MySQL)',en:'Jewelry store management app (Angular + Spring Boot + MySQL)'},exp2B2:{fr:'Gestion des produits, factures, employés et rôles (admin/employé)',en:'Managed products, invoices, employees, and roles (admin/employee)'},
+  exp3Date:{fr:"Jan. – Fév. 2024 · Stage d'initiation",en:'Jan. – Feb. 2024 · Intro internship'},exp3Title:{fr:'Stagiaire développement',en:'Development Intern'},exp3Company:{fr:'One Tech Business Solutions',en:'One Tech Business Solutions'},exp3B1:{fr:'Observation du cycle de vie de projets web en environnement professionnel',en:'Observed the lifecycle of web projects in a professional environment'},
+  exp4Date:{fr:'2023 – 2026 · Formation',en:'2023 – 2026 · Education'},exp4Title:{fr:"Licence Technologies de l'Informatique — DSI",en:"Bachelor's in IT — Information Systems Development"},exp4Company:{fr:'ISET Kélibia · Mention Très Bien',en:'ISET Kélibia · With Honors'},
+  exp5Date:{fr:'2023 · Formation',en:'2023 · Education'},exp5Title:{fr:'Baccalauréat en Mathématiques',en:'High School Diploma — Mathematics'},exp5Company:{fr:'Lycée Sokra',en:'Sokra High School'},
+  contactTag:{fr:'05 — Contact',en:'05 — Contact'},contactTitle:{fr:'Travaillons ensemble 🤝',en:"Let's work together 🤝"},contactSub:{fr:'Ouverte aux opportunités — stage, poste junior, collaboration',en:'Open to opportunities — internships, junior roles, collaborations'},
   footerText:{fr:'Conçu & développé avec ♥ — Nermine Belgharek · 2026',en:'Designed & built with ♥ — Nermine Belgharek · 2026'},
-  modalTagline:{fr:"Plateforme SaaS multi-agences de réservation de transport inter-cités, conçue et déployée pour le marché libyen dans le cadre de mon PFE chez EZ-Pass.",en:'A multi-agency SaaS platform for intercity bus booking, designed and deployed for the Libyan market as part of my capstone project at EZ-Pass.'},
-  modalArchTitle:{fr:'Architecture',en:'Architecture'},
-  modalArchP:{fr:"ClickBus repose sur une architecture orientée domaine (DDD) découpée en trois services indépendants : un frontend <strong style='color:var(--purple-light)'>Angular</strong> (NgRx, signals, composants standalone, i18n via ngx-translate), un backend <strong style='color:var(--purple-light)'>Spring Boot</strong> qui expose l'API métier, et un service <strong style='color:var(--purple-light)'>FastAPI</strong> dédié à l'intelligence artificielle.",en:"ClickBus is built on a domain-driven (DDD) architecture split into three independent services: an <strong style='color:var(--purple-light)'>Angular</strong> frontend (NgRx, signals, standalone components, i18n via ngx-translate), a <strong style='color:var(--purple-light)'>Spring Boot</strong> backend exposing the business API, and a dedicated <strong style='color:var(--purple-light)'>FastAPI</strong> service for AI."},
-  modalArchLi1:{fr:"Modèle <strong>multi-agences</strong> : chaque agence gère ses propres trajets, bus et tarifs au sein d'une seule plateforme",en:'<strong>Multi-agency</strong> model: each agency manages its own routes, buses, and pricing within a single platform'},
-  modalArchLi2:{fr:'Rôles dédiés : <strong>Owner</strong>, <strong>Staff</strong> et <strong>Driver</strong>, avec sécurisation des accès par JWT et RBAC',en:'Dedicated roles: <strong>Owner</strong>, <strong>Staff</strong>, and <strong>Driver</strong>, secured with JWT and RBAC'},
-  modalPricingTitle:{fr:'Moteur de tarification dynamique',en:'Dynamic pricing engine'},
-  modalPricingP:{fr:"Le prix d'un billet n'est jamais figé : il résulte de la fusion en temps réel de plusieurs couches de tarification.",en:"A ticket's price is never fixed: it results from merging several pricing layers in real time."},
-  modalPricingLi1:{fr:"<strong>Tarif de base</strong> par trajet, défini par l'agence",en:"<strong>Base fare</strong> per route, set by the agency"},
-  modalPricingLi2:{fr:'<strong>Plans tarifaires</strong> propres à chaque agence (classe de bus, type de service)',en:'<strong>Pricing plans</strong> specific to each agency (bus class, service type)'},
-  modalPricingLi3:{fr:'<strong>Overlays calendaires</strong> qui ajustent automatiquement le prix selon la saison, les jours de forte affluence ou des événements ponctuels',en:'<strong>Calendar overlays</strong> that automatically adjust prices based on season, peak days, or one-off events'},
-  modalAiTitle:{fr:"Modules d'intelligence artificielle",en:'AI modules'},
-  modalAiLi1:{fr:'<strong>Analyse de sentiment</strong> des avis clients (TF-IDF + Régression Logistique) pour distinguer automatiquement retours positifs et négatifs',en:'<strong>Sentiment analysis</strong> of customer reviews (TF-IDF + Logistic Regression) to automatically separate positive and negative feedback'},
-  modalAiLi2:{fr:'<strong>Résumé automatique</strong> des feedbacks via un LLM (Groq) pour donner à chaque agence une vue synthétique de la satisfaction client',en:'<strong>Automatic summarization</strong> of feedback via an LLM (Groq) to give each agency a synthesized view of customer satisfaction'},
-  modalAiLi3:{fr:'<strong>Recommandation de contrats promotionnels</strong> aux agences via un modèle Random Forest, basé sur leur historique de réservations',en:'<strong>Promotional contract recommendations</strong> for agencies via a Random Forest model, based on their booking history'},
-  modalInfraTitle:{fr:'Infrastructure & déploiement',en:'Infrastructure & deployment'},
-  modalInfraLi1:{fr:"Frontend Angular déployé sur <strong>Vercel</strong>, backend Spring Boot et service FastAPI déployés sur <strong>Railway</strong>",en:'Angular frontend deployed on <strong>Vercel</strong>, Spring Boot backend and FastAPI service deployed on <strong>Railway</strong>'},
-  modalInfraLi2:{fr:'Base de données <strong>PostgreSQL</strong>, médias gérés via <strong>Cloudinary</strong>',en:'<strong>PostgreSQL</strong> database, media managed via <strong>Cloudinary</strong>'},
-  modalInfraLi3:{fr:"Billets générés en PDF à la volée, entièrement en mémoire, puis envoyés par email via <strong>Brevo</strong> — sans aucun stockage fichier côté serveur",en:'Tickets generated as PDFs on the fly, entirely in memory, then emailed via <strong>Brevo</strong> — with zero server-side file storage'},
-  modalInfraLi4:{fr:'Communication temps réel via <strong>WebSocket</strong> pour le suivi des trajets',en:'Real-time communication via <strong>WebSocket</strong> for trip tracking'},
-  modalDriverTitle:{fr:'Application conducteur',en:'Driver app'},
-  modalDriverP:{fr:"Une application mobile <strong>Ionic</strong> dédiée aux conducteurs permet la validation des billets par scan de QR Code et le suivi en temps réel des trajets.",en:'A dedicated <strong>Ionic</strong> mobile app lets drivers validate tickets via QR code scanning and track trips in real time.'},
+  modalTagline:{fr:"Plateforme SaaS multi-agences de réservation de transport inter-cités, conçue et déployée pour le marché libyen dans le cadre de mon PFE chez EZ-Pass.",en:'A multi-agency SaaS intercity bus booking platform, designed and deployed for the Libyan market as my capstone project at EZ-Pass.'},
+  modalArchTitle:{fr:'Architecture',en:'Architecture'},modalArchP:{fr:"ClickBus repose sur une architecture orientée domaine (DDD) découpée en trois services indépendants : un frontend <strong>Angular</strong> (NgRx, signals, composants standalone), un backend <strong>Spring Boot</strong> qui expose l'API métier, et un service <strong>FastAPI</strong> dédié à l'intelligence artificielle.",en:"ClickBus is built on a domain-driven (DDD) architecture with three independent services: an <strong>Angular</strong> frontend (NgRx, signals, standalone components), a <strong>Spring Boot</strong> backend exposing the business API, and a dedicated <strong>FastAPI</strong> AI service."},
+  modalArchLi1:{fr:"Modèle <strong>multi-agences</strong> : chaque agence gère ses propres trajets, bus et tarifs au sein d'une seule plateforme",en:'<strong>Multi-agency</strong> model: each agency manages its own routes, buses, and pricing within a single platform'},modalArchLi2:{fr:'Rôles dédiés : <strong>Owner</strong>, <strong>Staff</strong> et <strong>Driver</strong>, avec sécurisation des accès par JWT et RBAC',en:'Dedicated roles: <strong>Owner</strong>, <strong>Staff</strong>, and <strong>Driver</strong>, secured with JWT and RBAC'},
+  modalPricingTitle:{fr:'Moteur de tarification dynamique',en:'Dynamic pricing engine'},modalPricingLi1:{fr:"<strong>Tarif de base</strong> par trajet, défini par l'agence",en:"<strong>Base fare</strong> per route, set by the agency"},modalPricingLi2:{fr:'<strong>Plans tarifaires</strong> propres à chaque agence (classe de bus, type de service)',en:'<strong>Pricing plans</strong> specific to each agency (bus class, service type)'},modalPricingLi3:{fr:'<strong>Overlays calendaires</strong> qui ajustent automatiquement le prix selon la saison, les jours de forte affluence ou des événements ponctuels',en:'<strong>Calendar overlays</strong> that automatically adjust prices based on season, peak days, or one-off events'},
+  modalAiTitle:{fr:"Modules d'intelligence artificielle",en:'AI modules'},modalAiLi1:{fr:'<strong>Analyse de sentiment</strong> des avis clients (TF-IDF + Régression Logistique)',en:'<strong>Sentiment analysis</strong> of customer reviews (TF-IDF + Logistic Regression)'},modalAiLi2:{fr:'<strong>Résumé automatique</strong> des feedbacks via un LLM (Groq)',en:'<strong>Automatic summarization</strong> of feedback via an LLM (Groq)'},modalAiLi3:{fr:'<strong>Recommandation de contrats promotionnels</strong> via un modèle Random Forest',en:'<strong>Promotional contract recommendations</strong> via a Random Forest model'},
+  modalInfraTitle:{fr:'Infrastructure & déploiement',en:'Infrastructure & deployment'},modalInfraLi1:{fr:"Frontend Angular sur <strong>Vercel</strong>, Spring Boot + FastAPI sur <strong>Railway</strong>",en:'Angular frontend on <strong>Vercel</strong>, Spring Boot + FastAPI on <strong>Railway</strong>'},modalInfraLi2:{fr:'Base de données <strong>PostgreSQL</strong>, médias via <strong>Cloudinary</strong>',en:'<strong>PostgreSQL</strong> database, media via <strong>Cloudinary</strong>'},modalInfraLi3:{fr:"Billets PDF générés en mémoire et envoyés par email via <strong>Brevo</strong>",en:'PDF tickets generated in memory and emailed via <strong>Brevo</strong>'},modalInfraLi4:{fr:'Communication temps réel via <strong>WebSocket</strong>',en:'Real-time communication via <strong>WebSocket</strong>'},
+  modalDriverTitle:{fr:'Application conducteur',en:'Driver app'},modalDriverP:{fr:"Une application mobile <strong>Ionic</strong> dédiée aux conducteurs permet la validation des billets par scan de QR Code et le suivi en temps réel des trajets.",en:'A dedicated <strong>Ionic</strong> mobile app lets drivers validate tickets via QR code scanning and track trips in real time.'},
   modalGithubLink:{fr:'Voir le projet en ligne',en:'View the live project'}
 };
-
 function setLang(lang){
-  document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(function(el){
-    var key = el.getAttribute('data-i18n');
-    if(translations[key] && translations[key][lang] !== undefined){
-      el.innerHTML = translations[key][lang];
-    }
+    var k=el.getAttribute('data-i18n');
+    if(T[k]&&T[k][lang]!==undefined)el.innerHTML=T[k][lang];
   });
-  document.getElementById('langBtnFr').classList.toggle('active', lang === 'fr');
-  document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
+  document.getElementById('langBtnFr').classList.toggle('active',lang==='fr');
+  document.getElementById('langBtnEn').classList.toggle('active',lang==='en');
+  document.documentElement.lang=lang;
 }
 </script>
-
 </body>
 </html>
